@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marrow &amp; Oak Remodeling</title>
+<meta name="description" content="Marrow &amp; Oak Remodeling — sustainable, honest home remodeling in Portland, Oregon.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        bone: "#F9E9EE",
+        bone2: "#F1D1DB",
+        black: "#3B0F22",
+        moss: "#7A2140",
+        olive: "#B5637C",
+        clay: "#7A2140",
+        brass: "#E28AA5",
+        whitewarm: "#F9E9EE"
+      },
+      fontFamily: {
+        sans: ["DM Sans","sans-serif"],
+        condensed: ["Barlow Condensed","sans-serif"],
+        serif: ["Playfair Display","serif"]
+      }
+    }
+  }
+}
+</script>
+
+<style>
+:root{
+  --bone:#F9E9EE;--bone2:#F1D1DB;--black:#3B0F22;
+  --moss:#7A2140;--olive:#B5637C;--clay:#7A2140;--brass:#E28AA5;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bone);color:var(--black);font-family:"DM Sans",sans-serif;overflow-x:hidden}
+::selection{background:var(--black);color:#fff}
+
+.condensed{font-family:"Barlow Condensed",sans-serif}
+.serif{font-family:"Playfair Display",serif}
+.eyebrow{font-size:.67rem;letter-spacing:.22em;text-transform:uppercase}
+.micro{font-size:.59rem;letter-spacing:.16em;text-transform:uppercase}
+
+/* uniform section rhythm — 100px, easing down on small screens */
+.sec{padding-top:100px;padding-bottom:100px}
+@media(max-width:900px){.sec{padding-top:76px;padding-bottom:76px}}
+@media(max-width:560px){.sec{padding-top:56px;padding-bottom:56px}}
+
+/* distinctive section heading system (tag + condensed headline) */
+.tag-row{display:inline-flex;align-items:center;gap:10px;padding:5px 16px 5px 5px;border:1px solid rgba(122,33,64,.35);border-radius:999px;font-size:.6rem;text-transform:uppercase;letter-spacing:.18em}
+.tag-row.on-dark{border-color:rgba(255,255,255,.22);color:rgba(255,255,255,.75)}
+.tag-num{width:21px;height:21px;border-radius:50%;background:var(--brass);color:var(--black);display:grid;place-items:center;font-family:"Barlow Condensed",sans-serif;font-size:.62rem;font-weight:700;flex-shrink:0}
+.head-title{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;font-weight:800;letter-spacing:-.01em;line-height:.94;font-size:clamp(2.3rem,4.6vw,4.6rem)}
+.head-title i{font-family:"Playfair Display",serif;font-style:italic;font-weight:500;text-transform:none;letter-spacing:0;color:var(--brass)}
+.head-title.lg{font-size:clamp(2.6rem,5.2vw,5.4rem)}
+
+.page-noise{
+  position:fixed;inset:0;pointer-events:none;z-index:99;opacity:.028;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply
+}
+
+.loader{
+  position:fixed;inset:0;background:var(--black);z-index:500;
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .9s ease,visibility .9s ease
+}
+.loader.off{opacity:0;visibility:hidden}
+.loader-inner{text-align:center;color:#fff}
+.loader-word{overflow:hidden}
+.loader-word span{display:inline-block;transform:translateY(110%);animation:lift .9s .1s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes lift{to{transform:none}}
+.loader-bar{width:150px;height:1px;background:rgba(255,255,255,.15);margin:18px auto 0;overflow:hidden}
+.loader-bar span{display:block;height:100%;width:0;background:var(--brass);animation:load 1.1s .15s ease forwards}
+@keyframes load{to{width:100%}}
+
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding-top:env(safe-area-inset-top,0px);
+  transition:background .4s ease,color .4s ease,border-color .4s ease
+}
+.nav.scrolled{
+  background:rgba(249,233,238,.94);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(59,15,34,.08);
+  color:var(--black)!important
+}
+.nav.scrolled .logo-main{color:var(--black)}
+.nav.scrolled .logo-sub{color:rgba(59,15,34,.45)}
+.nav.scrolled .nav-item{color:rgba(59,15,34,.58)}
+.nav.scrolled .nav-cta{border-color:rgba(59,15,34,.2);color:var(--black)}
+.nav.scrolled .nav-burger span{background:var(--black)}
+
+.nav-item{position:relative}
+.nav-item:after{
+  content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--brass);
+  transform:scaleX(0);transform-origin:right;transition:transform .35s ease
+}
+.nav-item:hover:after{transform:scaleX(1);transform-origin:left}
+
+.logo-mark{height:67px;width:auto;object-fit:contain;flex-shrink:0}
+
+.nav-burger{width:34px;height:34px;display:grid;place-items:center;gap:5px}
+.nav-burger span{display:block;width:20px;height:1.5px;background:#fff;transition:.3s ease}
+.nav-burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+.mobile-menu{
+  position:fixed;top:0;left:0;right:0;z-index:190;background:var(--black);color:#fff;
+  padding:110px 28px 40px;transform:translateY(-100%);opacity:0;visibility:hidden;
+  transition:transform .45s cubic-bezier(.22,1,.36,1),opacity .45s ease,visibility .45s ease;
+  padding-top:calc(110px + env(safe-area-inset-top,0px))
+}
+.mobile-menu.open{transform:none;opacity:1;visibility:visible}
+.mobile-menu a{display:block;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1);font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:1.4rem}
+
+.reveal{
+  opacity:0;transform:translateY(26px);
+  transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1)
+}
+.reveal.in{opacity:1;transform:none}
+.reveal-x{
+  opacity:0;transform:translateX(-24px);
+  transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)
+}
+.reveal-x.in{opacity:1;transform:none}
+
+.hero{
+  min-height:100svh;position:relative;overflow:hidden;background:var(--black);color:#fff
+}
+.hero-media{
+  position:absolute;right:0;top:0;width:57%;height:100%;overflow:hidden
+}
+.hero-media video,.hero-media img{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  filter:saturate(.7) contrast(1.05);
+  transform:scale(1.08);
+  animation:heroScale 15s cubic-bezier(.22,1,.36,1) forwards
+}
+@keyframes heroScale{to{transform:scale(1)}}
+.hero-shade{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,#3B0F22 0%,#3B0F22 31%,rgba(59,15,34,.92) 48%,rgba(59,15,34,.2) 76%,rgba(59,15,34,0) 100%),
+    linear-gradient(0deg,rgba(59,15,34,.45),transparent 35%)
+}
+.hero-grid{
+  position:absolute;inset:0;pointer-events:none;opacity:.12;
+  background-image:linear-gradient(rgba(255,255,255,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.11) 1px,transparent 1px);
+  background-size:90px 90px;
+  mask-image:linear-gradient(90deg,black 0%,transparent 80%)
+}
+.hero-content{position:relative;z-index:3}
+.hero-tag{border-left:2px solid var(--brass);padding-left:13px}
+.hero-title{font-size:clamp(2.5rem,5.6vw,5.6rem);line-height:.88;letter-spacing:-.045em;font-weight:600}
+.hero-title em{font-family:"Playfair Display",serif;font-weight:400;color:var(--brass);letter-spacing:-.03em}
+.hero-note{
+  position:absolute;right:4%;bottom:10%;z-index:4;max-width:230px;
+  font-size:12px;line-height:1.65;color:rgba(255,255,255,.45)
+}
+.hero-note .line{width:44px;height:1px;background:var(--brass);margin-bottom:12px}
+
+.cursor-dot,.cursor-ring{position:fixed;pointer-events:none;z-index:450;transform:translate(-50%,-50%);opacity:0}
+.cursor-dot{width:8px;height:8px;border-radius:50%;background:var(--brass)}
+.cursor-ring{width:28px;height:28px;border-radius:50%;border:1px solid rgba(226,138,165,.75);transition:width .2s ease,height .2s ease}
+body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{opacity:1}
+body.cursor-large .cursor-ring{width:54px;height:54px}
+
+.magnet{transition:transform .18s ease}
+.btn-dark,.btn-light{
+  display:inline-flex;align-items:center;gap:.7rem;
+  padding:15px 19px;
+  font-size:11px;text-transform:uppercase;letter-spacing:.16em;font-weight:600;
+  transition:background .35s ease,color .35s ease,border-color .35s ease,transform .35s ease
+}
+.btn-dark{background:var(--brass);color:#3B0F22}
+.btn-dark:hover{background:#EFA9BE}
+.btn-light{border:1px solid rgba(255,255,255,.25);color:#fff}
+.btn-light:hover{border-color:var(--brass);background:rgba(226,138,165,.09)}
+
+.ticker{white-space:nowrap;overflow:hidden;background:var(--brass);color:var(--black)}
+.ticker-track{display:flex;width:max-content;animation:ticker 64s linear infinite}
+@keyframes ticker{to{transform:translateX(-50%)}}
+
+.issue-grid{
+  display:grid;
+  grid-template-columns:70px 1fr;
+  border-top:1px solid rgba(59,15,34,.13);
+  padding:24px 0
+}
+.issue-grid:last-child{border-bottom:1px solid rgba(59,15,34,.13)}
+.issue-no{font-family:"Barlow Condensed",sans-serif;font-size:1.1rem;letter-spacing:.08em;color:var(--clay)}
+.issue-grid h3{font-size:1.05rem;font-weight:600}
+.issue-grid p{font-size:.9rem;line-height:1.75;color:rgba(59,15,34,.56);max-width:600px;margin-top:9px}
+@media(min-width:640px){.issue-grid{grid-template-columns:90px 1fr}}
+
+.editorial{
+  position:relative;overflow:hidden
+}
+.editorial img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1s cubic-bezier(.22,1,.36,1)}
+.editorial:hover img{transform:scale(1.04)}
+.editorial:after{
+  content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.7),transparent 55%);pointer-events:none
+}
+.editorial-label{position:absolute;left:20px;right:20px;bottom:20px;z-index:2;color:#fff}
+.editorial-label .type{color:var(--brass);font-size:.62rem;text-transform:uppercase;letter-spacing:.19em}
+.editorial-label h3{font-family:"Playfair Display",serif;font-size:1.5rem;line-height:1.1;margin-top:7px}
+@media(min-width:640px){.editorial-label h3{font-size:2rem}.editorial-label{left:25px;right:25px;bottom:23px}}
+.editorial-arrow{
+  width:38px;height:38px;border:1px solid rgba(255,255,255,.4);
+  display:grid;place-items:center;transition:.35s ease;flex-shrink:0
+}
+@media(min-width:640px){.editorial-arrow{width:43px;height:43px}}
+.editorial:hover .editorial-arrow{background:var(--brass);border-color:var(--brass);color:#3B0F22;transform:translateX(4px)}
+
+.blueprint{
+  background-color:#33101F;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:42px 42px;
+  position:relative
+}
+.blueprint:before,.blueprint:after{
+  content:"";position:absolute;border:1px solid rgba(226,138,165,.23);pointer-events:none
+}
+.blueprint:before{inset:16px}
+.blueprint:after{inset:32px;border-color:rgba(226,138,165,.1)}
+@media(min-width:900px){.blueprint:before{inset:28px}.blueprint:after{inset:48px}}
+.blueprint-inner{position:relative;z-index:2}
+
+.plan-card{
+  background:#2A0916;
+  border:1px solid rgba(255,255,255,.08);
+  padding:22px;
+  transition:transform .4s ease,border-color .4s ease,background .4s ease
+}
+.plan-card:hover{transform:translateY(-6px);border-color:rgba(226,138,165,.35);background:#33101F}
+
+/* REVIEW CAROUSEL */
+.review-wrap{position:relative;overflow:hidden}
+.review-track{display:flex;transition:transform .55s cubic-bezier(.22,1,.36,1)}
+.review-slide{flex:0 0 100%;padding:0 2px}
+.review-card{
+  position:relative;background:var(--black);color:#fff;overflow:hidden;
+  padding:36px 24px
+}
+@media(min-width:768px){.review-card{padding:56px 64px}}
+.review-card:before{
+  content:"“";position:absolute;right:14px;top:-40px;font-family:"Playfair Display",serif;font-size:120px;
+  color:rgba(226,138,165,.1);line-height:1
+}
+@media(min-width:768px){.review-card:before{font-size:170px;right:18px;top:-48px}}
+.review-stars{color:var(--brass);font-size:.85rem;letter-spacing:.15em}
+.review-controls{display:flex;align-items:center;justify-content:center;gap:22px;margin-top:24px}
+.review-arrow{width:40px;height:40px;border-radius:50%;border:1px solid rgba(59,15,34,.25);display:grid;place-items:center;transition:.25s ease;flex-shrink:0}
+.review-arrow:hover{background:var(--black);color:#fff;border-color:var(--black)}
+.review-dots{display:flex;gap:8px}
+.review-dot{width:7px;height:7px;border-radius:50%;background:rgba(59,15,34,.22);cursor:pointer;transition:.25s ease;border:0;padding:0}
+.review-dot.active{background:var(--clay);width:20px;border-radius:4px}
+
+.service{border-top:1px solid rgba(255,255,255,.11);padding:22px 0}
+.service:last-child{border-bottom:1px solid rgba(255,255,255,.11)}
+.service .num{font-family:"Barlow Condensed",sans-serif;font-size:.82rem;color:rgba(255,255,255,.33);letter-spacing:.1em}
+.service h3{font-size:1.15rem;font-weight:500}
+@media(min-width:640px){.service h3{font-size:1.45rem}.service{padding:26px 0}}
+.service .arrow{font-size:1.35rem;color:rgba(255,255,255,.35);transition:.35s ease}
+.service:hover .arrow{color:var(--brass);transform:translateX(7px)}
+
+.timeline-dot{
+  width:12px;height:12px;border-radius:50%;background:var(--brass);box-shadow:0 0 0 8px rgba(226,138,165,.08)
+}
+.timeline-line{width:1px;background:rgba(59,15,34,.12);flex:1}
+
+.faq-item{border-top:1px solid rgba(59,15,34,.12)}
+.faq-item:last-child{border-bottom:1px solid rgba(59,15,34,.12)}
+.faq-q{
+  width:100%;display:flex;align-items:center;justify-content:space-between;
+  padding:20px 0;text-align:left;font-weight:600;gap:16px
+}
+.faq-icon{font-size:1.5rem;font-weight:300;color:var(--clay);transition:transform .35s ease;flex-shrink:0}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.faq-a div{padding:0 20px 24px 0;color:rgba(59,15,34,.56);font-size:.9rem;line-height:1.75}
+@media(min-width:640px){.faq-a div{padding-right:60px}}
+
+.form-input{
+  width:100%;padding:16px 0;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,.22);
+  color:#fff;outline:none;font-family:"DM Sans",sans-serif
+}
+.form-input:focus{border-color:var(--brass)}
+.form-input::placeholder{color:rgba(255,255,255,.45)}
+
+.map-box{
+  min-height:210px;
+  background:var(--black);
+  position:relative;overflow:hidden;color:#fff
+}
+.map-box:before{
+  content:"";position:absolute;inset:0;opacity:.5;
+  background-image:linear-gradient(20deg,transparent 48%,rgba(226,138,165,.12) 49%,rgba(226,138,165,.12) 50%,transparent 51%),
+    linear-gradient(110deg,transparent 48%,rgba(226,138,165,.08) 49%,rgba(226,138,165,.08) 50%,transparent 51%);
+  background-size:80px 80px,55px 55px
+}
+.map-pin{
+  position:absolute;left:54%;top:47%;width:16px;height:16px;border-radius:50%;background:var(--brass);
+  box-shadow:0 0 0 12px rgba(226,138,165,.22)
+}
+
+.sticky{
+  transform:translateY(110%);
+  transition:transform .45s cubic-bezier(.22,1,.36,1);
+  padding-bottom:env(safe-area-inset-bottom,0px)
+}
+.sticky.on{transform:none}
+
+@media(max-width:900px){
+  .hero-media{width:100%;opacity:.5}
+  .hero-shade{background:linear-gradient(90deg,#3B0F22 0%,rgba(59,15,34,.8) 50%,rgba(59,15,34,.3) 100%)}
+  .hero-note{position:relative;right:auto;bottom:auto;margin-top:44px}
+  .cursor-dot,.cursor-ring{display:none}
+}
+@media(max-width:420px){
+  .hero-title{font-size:clamp(2.1rem,11vw,3rem)}
+  .head-title{font-size:clamp(1.9rem,9vw,3rem)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:10s!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+
+<body>
+<!-- <div class="loader" id="loader">
+  <div class="loader-inner">
+    <div class="micro text-white/35">Portland, Oregon · Est. 2019</div>
+    <div class="loader-word mt-3">
+      <span class="serif text-3xl">Marrow &amp; Oak</span>
+    </div>
+    <div class="loader-bar"><span></span></div>
+  </div>
+</div> -->
+
+<div class="page-noise"></div>
+<div class="cursor-dot" id="dot"></div>
+<div class="cursor-ring" id="ring"></div>
+
+<!-- NAV -->
+<header id="nav" class="nav text-white">
+  <div class="max-w-[1500px] mx-auto px-5 sm:px-6 lg:px-9 h-[72px] lg:h-[82px] flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3 min-w-0">
+      <img src="https://b-mubarak.rf.gd/wp-content/uploads/2026/09/mo.png" alt="Marrow & Oak logo" class="logo-mark" style="max-width:200px !important">
+      
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-8 text-[11px] uppercase tracking-[.15em]">
+      <a class="nav-item" href="#about">Why Us</a>
+      <a class="nav-item" href="#work">Projects</a>
+      <a class="nav-item" href="#method">Method</a>
+      <a class="nav-item" href="#services">Services</a>
+      <a class="nav-item" href="#journal">Ideas</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="https://marrowandoak.com/book/" target="_blank" rel="noopener" class="nav-cta hidden sm:inline-flex border border-white/25 text-white px-4 py-3 text-[10px] uppercase tracking-[.15em]">
+        Book a call
+      </a>
+      <button id="navToggle" class="nav-burger lg:hidden" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="mobileMenu" class="mobile-menu lg:hidden">
+  <a href="#about">Why Us</a>
+  <a href="#work">Projects</a>
+  <a href="#method">Method</a>
+  <a href="#services">Services</a>
+  <a href="#journal">Ideas</a>
+  <a href="https://marrowandoak.com/book/" target="_blank" rel="noopener" class="btn-dark magnet mt-8 !inline-flex">Book a call ↗</a>
+</div>
+
+<!-- HERO -->
+<main>
+<section class="hero">
+  <div class="hero-media">
+    <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=90">
+      <source src="https://assets.mixkit.co/videos/1459/1459-360.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-shade"></div>
+  <div class="hero-grid"></div>
+
+  <div class="max-w-[1500px] mx-auto px-5 sm:px-6 lg:px-9 min-h-[100svh] flex items-end pt-24 pb-24 lg:pt-28 lg:pb-28">
+    <div class="hero-content max-w-[900px]">
+      <div class="reveal hero-tag mb-6">
+        <div class="eyebrow text-brass">Portland · Oregon</div>
+        <div class="micro text-white/40 mt-2">⭐4.9 . (20) on google</div>
+      </div>
+
+      <h1 class="reveal hero-title">
+        HONEST<br>
+        <em>MATERIALS.</em><br>
+        LASTING SPACES.
+      </h1>
+
+      <p class="reveal mt-7 max-w-xl text-white/62 leading-[1.75] text-sm lg:text-base" style="transition-delay:.1s">
+        Free in-home consultation, a fixed-price quote before you sign anything, and one dedicated project manager who answers when you call.
+      </p>
+
+      <div class="reveal mt-8 flex flex-wrap gap-4" style="transition-delay:.17s">
+        <a href="https://marrowandoak.com/book/" target="_blank" rel="noopener" class="btn-dark magnet">
+          Start your project
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5h10.5M8.5 3.5l4 4-4 4" stroke="currentColor"/></svg>
+        </a>
+        <a href="#work" class="btn-light magnet">See what we've built</a>
+      </div>
+
+      <div class="hero-note hidden md:block">
+        <div class="line"></div>
+        <div>Founded in 2019. A team of 9.<br>25+ Portland homes remodeled with honest materials.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<section class="ticker">
+  <div class="ticker-track">
+    <div class="flex items-center gap-10 py-3 px-5 text-[10px] uppercase tracking-[.2em] font-semibold">
+      <span>Design</span><span>·</span><span>Build</span><span>·</span><span>Sustainable Materials</span><span>·</span><span>Renovation</span><span>·</span><span>Client Care</span><span>·</span>
+      <span>Design</span><span>·</span><span>Build</span><span>·</span><span>Sustainable Materials</span><span>·</span><span>Renovation</span><span>·</span><span>Client Care</span><span>·</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="bg-bone sec">
+  <div class="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-9">
+    <div class="grid lg:grid-cols-[.85fr_1.15fr] gap-12 lg:gap-24 items-center">
+      <div class="reveal-x">
+        <div class="tag-row text-clay"><span class="tag-num">01</span>Why Marrow &amp; Oak</div>
+        <h2 class="head-title lg mt-5">Small team.<br><i>Straight answers.</i></h2>
+        <p class="mt-7 max-w-md text-black/55 leading-[1.8]">
+          Since 2019, our nine-person crew has remodeled Portland homes with
+          honest materials and no shortcuts — so what you see is what you get.
+        </p>
+
+        <div class="mt-10 flex gap-8 sm:gap-10">
+          <div>
+            <div class="serif text-2xl sm:text-3xl text-clay">2019</div>
+            <div class="micro text-black/45 mt-1">Founded</div>
+          </div>
+          <div>
+            <div class="serif text-2xl sm:text-3xl text-clay">9</div>
+            <div class="micro text-black/45 mt-1">Team members</div>
+          </div>
+          <div>
+            <div class="serif text-2xl sm:text-3xl text-clay">25+</div>
+            <div class="micro text-black/45 mt-1">Projects done</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal relative min-h-[320px] sm:min-h-[420px] lg:min-h-[560px] overflow-hidden bg-bone2">
+        <img src="https://images.unsplash.com/photo-1581369407131-f47913cc9781?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="absolute inset-0 w-full h-full object-cover" alt="Marrow and Oak remodeling crew at work in Portland">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent"></div>
+        <div class="absolute left-6 sm:left-7 bottom-6 sm:bottom-7 right-6 sm:right-7">
+          <div class="micro text-white/60">Kitchen . Portland, Oregon</div>
+          <div class="serif text-white text-xl sm:text-2xl mt-2">Honest materials. Lasting spaces.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" class="bg-black text-white sec">
+  <div class="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-9">
+    <div class="flex flex-col md:flex-row justify-between gap-8 mb-12">
+      <div class="reveal">
+        <div class="tag-row on-dark"><span class="tag-num">02</span>Selected work</div>
+        <h2 class="head-title lg mt-5">Homes done<br><i>honestly.</i></h2>
+      </div>
+      <div class="reveal max-w-sm text-white/45 text-sm leading-[1.75]" style="transition-delay:.1s">
+        A few recent remodels from around Portland.
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-[.72fr_1.28fr] gap-4 sm:gap-5">
+      <a href="https://marrowandoak.com/projects/sellwood-bathroom/" target="_blank" rel="noopener" class="editorial reveal min-h-[340px] lg:min-h-[620px]">
+        <img src="https://images.unsplash.com/photo-1641432781399-d0a8bdec4c42?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Elegant bathroom renovation">
+        <div class="editorial-label">
+          <div class="flex items-end justify-between gap-5">
+            <div>
+              <div class="type">Sellwood · Bathroom</div>
+              <h3>A calmer bathroom for a growing family.</h3>
+            </div>
+            <div class="editorial-arrow">↗</div>
+          </div>
+        </div>
+      </a>
+
+      <div class="grid md:grid-cols-2 gap-4 sm:gap-5">
+        <a href="https://marrowandoak.com/projects/alberta-addition/" target="_blank" rel="noopener" class="editorial reveal min-h-[260px] md:min-h-[300px] lg:min-h-[420px]">
+          <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=1200&q=90" alt="Home addition in Portland">
+          <div class="editorial-label">
+            <div class="type">Alberta Arts · Addition</div>
+            <div class="flex justify-between items-end gap-4">
+              <h3>More room. Same charm.</h3>
+              <div class="editorial-arrow shrink-0">↗</div>
+            </div>
+          </div>
+        </a>
+
+        <div class="editorial reveal min-h-[260px] md:min-h-[300px] lg:min-h-[420px]" style="transition-delay:.08s">
+          <img src="https://images.unsplash.com/photo-1770063817031-f3b98dff347f?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kitchen renovation">
+          <div class="editorial-label">
+            <div class="type">Hawthorne · Kitchen</div>
+            <div class="flex justify-between items-end gap-4">
+              <h3>A kitchen that finally works.</h3>
+              <div class="editorial-arrow shrink-0">↗</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="editorial reveal min-h-[260px] md:min-h-[300px] lg:min-h-[420px] md:col-span-2" style="transition-delay:.15s">
+          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=90" alt="Open concept home renovation">
+          <div class="editorial-label">
+            <div class="type">Irvington · Whole-Home</div>
+            <div class="flex justify-between items-end gap-4">
+              <h3>Good bones deserve a second chance.</h3>
+              <div class="editorial-arrow shrink-0">↗</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-9 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <a href="https://marrowandoak.com/gallery/" target="_blank" rel="noopener" class="text-[11px] uppercase tracking-[.16em] text-white/65 hover:text-brass transition-colors">View full project gallery ↗</a>
+      <span class="micro text-white/28">Sellwood · Alberta Arts · Hawthorne · Greater Portland</span>
+    </div>
+  </div>
+</section>
+
+<!-- BLUEPRINT / METHOD -->
+<section id="method" class="blueprint text-white sec">
+  <div class="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-9 blueprint-inner">
+    <div class="grid lg:grid-cols-[.72fr_1.28fr] gap-12 lg:gap-16 items-start">
+      <div class="reveal">
+        <div class="tag-row on-dark"><span class="tag-num">03</span>Inside the process</div>
+        <h2 class="head-title lg mt-5">Built on<br><i>clarity.</i></h2>
+        <p class="mt-7 text-white/45 leading-[1.8] max-w-md">
+          We plan everything up front — materials, design, budget —
+          so there are no surprises once we start building.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="plan-card reveal"><div class="micro text-brass">01 · Consultation</div><div class="font-semibold mt-5">Is this a good fit?</div><p class="text-sm text-white/42 leading-[1.7] mt-3">We talk goals, budget, and whether we're right for your home.</p></div>
+        <div class="plan-card reveal" style="transition-delay:.05s"><div class="micro text-brass">02 · Needs assessment</div><div class="font-semibold mt-5">What can this house do?</div><p class="text-sm text-white/42 leading-[1.7] mt-3">We measure, assess, and map out a realistic scope.</p></div>
+        <div class="plan-card reveal" style="transition-delay:.1s"><div class="micro text-brass">03 · Design + planning</div><div class="font-semibold mt-5">See it before it's built.</div><p class="text-sm text-white/42 leading-[1.7] mt-3">3D design, material choices, and a clear proposal.</p></div>
+        <div class="plan-card reveal" style="transition-delay:.15s"><div class="micro text-brass">04 · Construction</div><div class="font-semibold mt-5">Who's watching the details?</div><p class="text-sm text-white/42 leading-[1.7] mt-3">One project manager, daily updates, no surprises.</p></div>
+        <div class="plan-card reveal sm:col-span-2" style="transition-delay:.2s"><div class="micro text-brass">05 · Completion</div><div class="font-semibold mt-5">When is it really finished?</div><p class="text-sm text-white/42 leading-[1.7] mt-3">Final walkthrough, cleanup, and a one-year workmanship warranty.</p></div>
+      </div>
+    </div>
+
+    <div class="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 reveal">
+      <div class="micro text-white/35">A calmer process is a design choice.</div>
+      <a href="https://marrowandoak.com/how-we-work/" target="_blank" rel="noopener" class="inline-flex items-center gap-3 text-[11px] uppercase tracking-[.16em] text-white hover:text-brass transition-colors">Read the full method ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="bg-bone sec">
+  <div class="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-9">
+    <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-10 lg:gap-24 items-stretch">
+      <div class="reveal relative min-h-[380px] lg:min-h-[650px] overflow-hidden bg-bone2">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=90" class="absolute inset-0 w-full h-full object-cover" alt="Sustainable kitchen remodel detail">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent"></div>
+        <div class="absolute left-6 sm:left-7 bottom-6 sm:bottom-7">
+          <div class="micro text-white/50">Our services</div>
+          <div class="serif text-white text-2xl sm:text-3xl mt-2">Every project starts with honest materials.</div>
+        </div>
+      </div>
+
+      <div class="reveal flex flex-col justify-center">
+        <div class="tag-row text-clay"><span class="tag-num">04</span>What we do</div>
+        <h2 class="head-title lg mt-5">Full-service,<br><i>start to finish.</i></h2>
+        <p class="mt-7 text-black/55 leading-[1.8] max-w-lg">
+          One team designs, sources, and builds your remodel — with sustainable
+          materials at every step.
+        </p>
+
+        <div class="mt-10 space-y-0">
+          <div class="service grid grid-cols-[40px_1fr_28px] sm:grid-cols-[55px_1fr_30px] items-center text-black border-black/12">
+            <div class="num">01</div><h3>Kitchen Remodels</h3><div class="arrow">→</div>
+          </div>
+          <div class="service grid grid-cols-[40px_1fr_28px] sm:grid-cols-[55px_1fr_30px] items-center text-black border-black/12">
+            <div class="num">02</div><h3>Bathroom Renovations</h3><div class="arrow">→</div>
+          </div>
+          <div class="service grid grid-cols-[40px_1fr_28px] sm:grid-cols-[55px_1fr_30px] items-center text-black border-black/12">
+            <div class="num">03</div><h3>Additions &amp; ADUs</h3><div class="arrow">→</div>
+          </div>
+          <div class="service grid grid-cols-[40px_1fr_28px] sm:grid-cols-[55px_1fr_30px] items-center text-black border-black/12">
+            <div class="num">04</div><h3>Sustainable Whole-Home Remodels</h3><div class="arrow">→</div>
+          </div>
+        </div>
+
+        <a href="https://marrowandoak.com/services/" target="_blank" rel="noopener" class="mt-9 inline-flex items-center gap-3 text-[11px] uppercase tracking-[.16em] font-semibold hover:text-clay transition-colors">See all services ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS CAROUSEL -->
+<section class="bg-bone2 sec">
+  <div class="max-w-[1100px] mx-auto px-5 sm:px-6 lg:px-9">
+    <div class="tag-row text-clay mx-auto"><span class="tag-num">★</span>What clients say</div>
+    <div class="review-wrap mt-10 reveal" id="reviewWrap">
+      <div class="review-track" id="reviewTrack">
+        <div class="review-slide">
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <blockquote class="serif text-[clamp(1.5rem,3.4vw,2.6rem)] leading-[1.25] mt-6 max-w-3xl">
+              They treated our 1920s bungalow like it deserved to be saved, not gutted.
+            </blockquote>
+            <div class="mt-7 pt-6 border-t border-white/10 text-sm text-white/50">Dana Whitfield · Kitchen + primary bath remodel</div>
+          </div>
+        </div>
+        <div class="review-slide">
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <blockquote class="serif text-[clamp(1.5rem,3.4vw,2.6rem)] leading-[1.25] mt-6 max-w-3xl">
+              Every quote was exact, every delay was explained before we noticed it — the calmest remodel we've heard of.
+            </blockquote>
+            <div class="mt-7 pt-6 border-t border-white/10 text-sm text-white/50">Marcus Ito · Whole-home remodel, Irvington</div>
+          </div>
+        </div>
+        <div class="review-slide">
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <blockquote class="serif text-[clamp(1.5rem,3.4vw,2.6rem)] leading-[1.25] mt-6 max-w-3xl">
+              Our addition looks like it was always part of the house. That's the whole point, and they nailed it.
+            </blockquote>
+            <div class="mt-7 pt-6 border-t border-white/10 text-sm text-white/50">Priya Chandran · ADU addition, Alberta Arts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-controls">
+      <button class="review-arrow" id="reviewPrev" aria-label="Previous review">←</button>
+      <div class="review-dots" id="reviewDots"></div>
+      <button class="review-arrow" id="reviewNext" aria-label="Next review">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNAL -->
+<section id="journal" class="bg-bone sec">
+  <div class="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-9">
+    <div class="grid lg:grid-cols-[.75fr_1.25fr] gap-10 items-end mb-12">
+      <div class="reveal">
+        <div class="tag-row text-clay"><span class="tag-num">05</span>Learning Center</div>
+        <h2 class="head-title lg mt-5">Learn before<br><i>you build.</i></h2>
+      </div>
+      <p class="reveal text-black/52 max-w-md leading-[1.8]" style="transition-delay:.08s">
+        Guides on materials, budgets, and sustainable renovation — so you can
+        make confident decisions.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <a href="https://marrowandoak.com/blog/design-build-vs-general-contractor/" target="_blank" rel="noopener" class="group reveal">
+        <div class="aspect-[4/3] overflow-hidden bg-bone2">
+          <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=900&q=85" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" alt="Design and construction planning">
+        </div>
+        <div class="mt-5">
+          <div class="micro text-clay">Planning</div>
+          <h3 class="serif text-xl sm:text-2xl mt-2 group-hover:text-clay transition-colors">Design/Build vs. General Contractor: Which Is Right?</h3>
+        </div>
+      </a>
+
+      <a href="https://marrowandoak.com/blog/sustainable-materials-that-last/" target="_blank" rel="noopener" class="group reveal" style="transition-delay:.08s">
+        <div class="aspect-[4/3] overflow-hidden bg-bone2">
+          <img src="https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&w=900&q=85" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" alt="Sustainable material details">
+        </div>
+        <div class="mt-5">
+          <div class="micro text-clay">Materials</div>
+          <h3 class="serif text-xl sm:text-2xl mt-2 group-hover:text-clay transition-colors">Sustainable Materials That Actually Last</h3>
+        </div>
+      </a>
+
+      <a href="https://marrowandoak.com/blog/what-a-portland-remodel-costs/" target="_blank" rel="noopener" class="group reveal" style="transition-delay:.16s">
+        <div class="aspect-[4/3] overflow-hidden bg-bone2">
+          <img src="https://plus.unsplash.com/premium_photo-1733514691581-ad459db86e86?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" alt="Remodeled Portland home">
+        </div>
+        <div class="mt-5">
+          <div class="micro text-clay">Budget</div>
+          <h3 class="serif text-xl sm:text-2xl mt-2 group-hover:text-clay transition-colors">What a Portland Remodel Really Costs</h3>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="bg-bone2 sec">
+  <div class="max-w-[950px] mx-auto px-5 sm:px-6 lg:px-9">
+    <div class="reveal text-center mb-10">
+      <div class="tag-row text-clay mx-auto"><span class="tag-num">?</span>Before the first call</div>
+      <h2 class="head-title lg mt-5">A few practical<br><i>questions.</i></h2>
+    </div>
+
+    <div>
+      <div class="faq-item reveal">
+        <button class="faq-q"><span>What is the investment minimum?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><div>Most projects start around $45,000. We'll help you understand what's realistic for your goals during the first call.</div></div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:.05s">
+        <button class="faq-q"><span>What areas do you serve?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><div>We serve Portland and the surrounding metro, including Sellwood, Alberta Arts and Hawthorne.</div></div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:.1s">
+        <button class="faq-q"><span>How involved is the project manager?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><div>Your project manager is your single point of contact — from groundbreaking to final walkthrough.</div></div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:.15s">
+        <button class="faq-q"><span>Do you use sustainable materials?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><div>Yes. We prioritize reclaimed wood, low-VOC finishes and locally sourced materials wherever it makes sense.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT (last section) -->
+<section class="bg-black text-white sec">
+  <div class="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-9">
+    <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-12 lg:gap-24">
+      <div class="reveal">
+        <div class="tag-row on-dark"><span class="tag-num">06</span>Let's talk about your home</div>
+        <h2 class="head-title lg mt-5 text-white">Bring us<br><i>the what if.</i></h2>
+        <p class="text-white leading-[1.8] max-w-xl mt-8">
+          What if the kitchen finally worked? What if your home fit the way you actually live?
+        </p>
+
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a href="https://marrowandoak.com/book/" target="_blank" rel="noopener" class="btn-dark magnet">Book a discovery call ↗</a>
+          <a href="tel:5037714456" class="btn-light magnet text-white">Call (503) 771-4456</a>
+        </div>
+      </div>
+
+      <div class="reveal" style="transition-delay:.1s">
+        <div class="micro text-white">Project enquiry</div>
+        <form class="mt-5 space-y-4" onsubmit="return false;">
+          <input class="form-input" placeholder="Your name">
+          <input class="form-input" placeholder="Email address">
+          <input class="form-input" placeholder="What are you thinking about?">
+          <select class="form-input bg-black text-white">
+            <option value="">Approximate investment</option>
+            <option>$45k – $100k</option>
+            <option>$100k – $250k</option>
+            <option>$250k – $500k</option>
+            <option>$500k+</option>
+          </select>
+          <a href="https://marrowandoak.com/book/" target="_blank" rel="noopener" class="btn-dark magnet mt-5">Continue to consultation booking ↗</a>
+        </form>
+
+        <!-- <div class="map-box mt-12">
+          <div class="absolute left-5 top-5 z-2 text-white">
+            <div class="micro text-white/70">Visit / contact</div>
+            <div class="font-semibold mt-2 text-white">1420 SE Division Street</div>
+            <div class="text-sm text-white/80">Portland, Oregon 97202</div>
+            <div class="micro mt-3 text-white/55">Oregon CCB License #223481</div>
+          </div>
+          <div class="map-pin"></div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-black border-t border-white/10 text-white/70">
+  <div class="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-9 py-8 flex flex-col md:flex-row items-center justify-between gap-5 text-xs">
+    <div class="flex items-center gap-3">
+      <img src="https://b-mubarak.rf.gd/wp-content/uploads/2026/09/mo.png" alt="Marrow & Oak logo" style="max-width:150px">
+      <span>© 2026 Marrow &amp; Oak Remodeling. All rights reserved. <b>Designed by <big><a href="https://thebmubarak.github.io/portfolio">BMUBARAK</a></big></b></span>
+    </div>
+    <div class="flex flex-wrap justify-center gap-6">
+      <a href="https://marrowandoak.com/" target="_blank" rel="noopener" class="text-white hover:text-brass transition-colors">Marrow &amp; Oak</a>
+      <a href="https://marrowandoak.com/who-we-are/" target="_blank" rel="noopener" class="text-white hover:text-brass transition-colors">Who We Are</a>
+      <a href="https://marrowandoak.com/reviews/" target="_blank" rel="noopener" class="text-white hover:text-brass transition-colors">Reviews</a>
+    </div>
+  </div>
+</footer>
+</main>
+
+<!-- MOBILE CTA -->
+<div id="sticky" class="sticky fixed bottom-0 inset-x-0 z-[220] bg-black/95 border-t border-white/10 p-4 lg:hidden flex items-center justify-between backdrop-blur-md">
+  <div>
+    <div class="micro text-white/30">Marrow &amp; Oak Remodeling</div>
+    <div class="text-sm text-white mt-1">Ready to discuss your home?</div>
+  </div>
+  <a href="https://marrowandoak.com/book/" target="_blank" rel="noopener" class="bg-brass text-black px-5 py-3 text-[10px] uppercase tracking-[.15em] font-semibold">Book</a>
+</div>
+
+<script>
+window.addEventListener("load",()=>setTimeout(()=>document.getElementById("loader").classList.add("off"),650));
+
+const nav=document.getElementById("nav");
+const sticky=document.getElementById("sticky");
+function scrollUI(){
+  nav.classList.toggle("scrolled",window.scrollY>60);
+  sticky.classList.toggle("on",window.scrollY>720);
+}
+addEventListener("scroll",scrollUI,{passive:true});scrollUI();
+
+const io=new IntersectionObserver((entries,obs)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add("in");obs.unobserve(e.target)}
+  })
+},{threshold:.12});
+document.querySelectorAll(".reveal,.reveal-x").forEach(el=>io.observe(el));
+
+document.querySelectorAll(".faq-item").forEach(item=>{
+  item.querySelector(".faq-q").addEventListener("click",()=>{
+    const open=item.classList.contains("open");
+    document.querySelectorAll(".faq-item.open").forEach(x=>{
+      x.classList.remove("open");
+      x.querySelector(".faq-a").style.maxHeight=null;
+    });
+    if(!open){
+      item.classList.add("open");
+      item.querySelector(".faq-a").style.maxHeight=item.querySelector(".faq-a").scrollHeight+"px";
+    }
+  });
+});
+
+/* mobile menu */
+const navToggle=document.getElementById("navToggle");
+const mobileMenu=document.getElementById("mobileMenu");
+navToggle.addEventListener("click",()=>{
+  const open=mobileMenu.classList.toggle("open");
+  navToggle.classList.toggle("open",open);
+  navToggle.setAttribute("aria-expanded",open);
+  document.body.style.overflow=open?"hidden":"";
+});
+mobileMenu.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{
+  mobileMenu.classList.remove("open");
+  navToggle.classList.remove("open");
+  document.body.style.overflow="";
+}));
+
+/* review carousel */
+(function(){
+  const track=document.getElementById("reviewTrack");
+  const slides=track.children;
+  const dotsWrap=document.getElementById("reviewDots");
+  const prev=document.getElementById("reviewPrev");
+  const next=document.getElementById("reviewNext");
+  let i=0,timer;
+  for(let n=0;n<slides.length;n++){
+    const d=document.createElement("button");
+    d.className="review-dot"+(n===0?" active":"");
+    d.setAttribute("aria-label","Go to review "+(n+1));
+    d.addEventListener("click",()=>go(n));
+    dotsWrap.appendChild(d);
+  }
+  function go(n){
+    i=(n+slides.length)%slides.length;
+    track.style.transform="translateX(-"+(i*100)+"%)";
+    dotsWrap.querySelectorAll(".review-dot").forEach((d,idx)=>d.classList.toggle("active",idx===i));
+    restart();
+  }
+  function restart(){
+    clearTimeout(timer);
+    timer=setTimeout(()=>go(i+1),6500);
+  }
+  prev.addEventListener("click",()=>go(i-1));
+  next.addEventListener("click",()=>go(i+1));
+  restart();
+})();
+
+if(matchMedia("(hover:hover)").matches){
+  document.body.classList.add("cursor-on");
+  const dot=document.getElementById("dot"), ring=document.getElementById("ring");
+  let x=0,y=0,rx=0,ry=0;
+  addEventListener("mousemove",e=>{
+    x=e.clientX;y=e.clientY;
+    dot.style.left=x+"px";dot.style.top=y+"px";
+  });
+  function tick(){
+    rx+=(x-rx)*.16;ry+=(y-ry)*.16;
+    ring.style.left=rx+"px";ring.style.top=ry+"px";
+    requestAnimationFrame(tick);
+  }
+  tick();
+
+  document.querySelectorAll("a,button,.editorial,.plan-card").forEach(el=>{
+    el.addEventListener("mouseenter",()=>document.body.classList.add("cursor-large"));
+    el.addEventListener("mouseleave",()=>document.body.classList.remove("cursor-large"));
+  });
+
+  document.querySelectorAll(".magnet").forEach(el=>{
+    el.addEventListener("mousemove",e=>{
+      const r=el.getBoundingClientRect();
+      const dx=(e.clientX-r.left-r.width/2)*.10;
+      const dy=(e.clientY-r.top-r.height/2)*.10;
+      el.style.transform=`translate(${dx}px,${dy}px)`;
+    });
+    el.addEventListener("mouseleave",()=>el.style.transform="");
+  });
+}
+</script>
+</body>
+</html>
